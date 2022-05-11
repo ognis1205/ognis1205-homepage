@@ -58,11 +58,7 @@ export const Component: React.FunctionComponent<Props> = ({
       zIndex={1}
       {...props}
     >
-      <Chakra.Container
-        display="flex"
-        p={2}
-        maxW="container.md"
-      >
+      <Chakra.Container display="flex" p={2} maxW="container.md">
         <Chakra.Flex align="center" mr={5}>
           <Chakra.Heading as="h1" size="lg" letterSpacing={'tighter'}>
             <Logo.Component />
@@ -92,7 +88,7 @@ export const Component: React.FunctionComponent<Props> = ({
             pl={2}
           >
             <ReactIcons.IoLogoGithub />
-            Source
+            View Source
           </MyLink>
         </Chakra.Stack>
         <Chakra.Flex flex={1}>
