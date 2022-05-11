@@ -10,13 +10,17 @@ import * as Logo from '@/components/navigation/logo';
 import * as Toggle from '@/components/navigation/toggle';
 import NextLink from 'next/link';
 
-const MyLink: React.FunctionComponent<LinkProps> = ({
+export type MyLinkProps = Chakra.LinkProps & {
+  path: string;
+};
+
+const MyLink: React.FunctionComponent<MyLinkProps> = ({
   href,
   path,
   target,
   children,
   ...props
-}: LinkProps): React.ReactElement => {
+}: MyLinkProps): React.ReactElement => {
   const active = path === href;
 
   const inactiveColor = Chakra.useColorModeValue('gray200', 'whiteAlpha.900');
@@ -36,10 +40,14 @@ const MyLink: React.FunctionComponent<LinkProps> = ({
   );
 };
 
-export const Component: React.FunctionComponent<BoxProps> = ({
+export type Props = Chakra.BoxProps & {
+  path: string;
+};
+
+export const Component: React.FunctionComponent<Props> = ({
   path,
   ...props
-}: BoxProps): React.ReactElement => {
+}: Props): React.ReactElement => {
   return (
     <Chakra.Box
       position="fixed"
@@ -54,9 +62,6 @@ export const Component: React.FunctionComponent<BoxProps> = ({
         display="flex"
         p={2}
         maxW="container.md"
-        wrap="wrap"
-        align="center"
-        justify="space-between"
       >
         <Chakra.Flex align="center" mr={5}>
           <Chakra.Heading as="h1" size="lg" letterSpacing={'tighter'}>
@@ -90,7 +95,8 @@ export const Component: React.FunctionComponent<BoxProps> = ({
             Source
           </MyLink>
         </Chakra.Stack>
-        <Chakra.Box flex={1} align="right">
+        <Chakra.Flex flex={1}>
+          <Chakra.Spacer />
           <Toggle.Component />
           <Chakra.Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
             <Chakra.Menu isLazy id="navbar-menu">
@@ -119,7 +125,7 @@ export const Component: React.FunctionComponent<BoxProps> = ({
               </Chakra.MenuList>
             </Chakra.Menu>
           </Chakra.Box>
-        </Chakra.Box>
+        </Chakra.Flex>
       </Chakra.Container>
     </Chakra.Box>
   );

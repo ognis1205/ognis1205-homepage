@@ -1,5 +1,5 @@
 /**
- * @fileoverview Defines logo.
+ * @fileoverview Defines theme toggle.
  * @copyright Shingo OKAWA 2022
  */
 import * as React from 'react';
@@ -24,7 +24,7 @@ export const Component: React.FunctionComponent<
       >
         <Chakra.IconButton
           aria-label="Toggle theme"
-          colorScheme={Chakra.useColorModeValue('purple', 'orange')}
+          colorScheme={Chakra.useColorModeValue('blue', 'yellow')}
           icon={Chakra.useColorModeValue(
             <ChakraIcons.MoonIcon />,
             <ChakraIcons.SunIcon />
