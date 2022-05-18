@@ -6,15 +6,8 @@ import * as React from 'react';
 import * as NextApp from 'next/app';
 import * as Chakra from '@chakra-ui/react';
 import Head from 'next/head';
-//import dynamic from 'next/dynamic'
 import * as Navigation from '@/components/navigation';
 import * as Footer from '@/components/layout/footer';
-//import VoxelDogLoader from '../voxel-dog-loader'
-
-//const LazyVoxelDog = dynamic(() => import('../voxel-dog'), {
-//  ssr: false,
-//  loading: () => <VoxelDogLoader />
-//})
 
 export type Props = {
   children: React.ReactNode;
@@ -41,7 +34,7 @@ export const Component: React.FunctionComponent<Props> = ({
       </Head>
       <Navigation.NavBar path={router.asPath} />
       <Chakra.Container maxW="container.md" pt={14}>
-        {/*<LazyVoxelDog />*/}
+        {/*<Lazy />*/}
         {children}
         <Footer.Component />
       </Chakra.Container>
