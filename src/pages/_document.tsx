@@ -25,7 +25,7 @@ export default class Home extends Document {
         <NextDocument.Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=optional"
           />
         </NextDocument.Head>
         <body>
