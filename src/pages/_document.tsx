@@ -25,11 +25,13 @@ export default class Home extends Document {
         <NextDocument.Head>
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400"
           />
         </NextDocument.Head>
         <body>
-          <Chakra.ColorModeScript initialColorMode={ChakraConfig.theme.config.initialColorMode} />
+          <Chakra.ColorModeScript
+            initialColorMode={ChakraConfig.theme.config.initialColorMode}
+          />
           <NextDocument.Main />
           <NextDocument.NextScript />
         </body>
