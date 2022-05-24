@@ -4,8 +4,8 @@
  */
 import * as React from 'react';
 import * as Chakra from '@chakra-ui/react';
-//import dynamic from 'next/dynamic';
 import P5 from 'p5';
+import * as Hooks from '@/utils/hooks';
 
 const Spinner: React.FunctionComponent<
   Record<string, never>
@@ -48,28 +48,24 @@ export const Loader: React.FunctionComponent<
   </Container>
 );
 
-const Player: React.FunctionComponent<
-  Record<string, never>
-> = (): React.ReactElement => {
-  const preload = (p5: p5Types): void => {
-    // 画像などのロードを行う
-  };
+export type Props = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  sketch: any;
+};
 
-  const setup = (p5: p5Types, canvasParentRef: Element): void => {
-    p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef);
-    // p5でいうsetupの処理を書く
-  };
+export const Player: React.FunctionComponent<Props> = (
+  props: Props
+): React.ReactElement => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [instance, setInstance] = Hooks.useSafeState<P5>(null);
 
-  const draw = (p5: p5Types): void => {
-    // p5でいうdrawの処理を書く
-  };
+  const container = React.useRef<HTMLDivElement>(null);
 
-  const windowResized = (p5: p5Types): void => {
-    // コンポーネントのレスポンシブ化
-    p5.resizeCanvas(p5.windowWidth, p5.windowHeight);
-  };
+  React.useEffect(() => {
+    if (!container.current) return;
+    setInstance(new P5(props.sketch, container.current));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.sketch]);
 
-  return (
-    <></>
-  );
+  return <Container ref={container} />;
 };
