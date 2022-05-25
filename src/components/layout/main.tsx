@@ -7,7 +7,9 @@ import * as NextApp from 'next/app';
 import * as Chakra from '@chakra-ui/react';
 import Head from 'next/head';
 import * as Navigation from '@/components/navigation';
+import * as ASCII from '@/components/layout/ascii';
 import * as Footer from '@/components/layout/footer';
+import * as Sketches from '@/components/layout/sketches';
 
 export type Props = {
   children: React.ReactNode;
@@ -34,7 +36,7 @@ export const Component: React.FunctionComponent<Props> = ({
       </Head>
       <Navigation.NavBar path={router.asPath} />
       <Chakra.Container maxW="container.md" pt={14}>
-        {/*<Lazy />*/}
+        <ASCII.Player sketch={Sketches.Rover}/>
         {children}
         <Footer.Component />
       </Chakra.Container>

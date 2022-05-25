@@ -48,13 +48,13 @@ export const Loader: React.FunctionComponent<
   </Container>
 );
 
-export type Props = {
+export type PlayerProps = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   sketch: any;
 };
 
-export const Player: React.FunctionComponent<Props> = (
-  props: Props
+export const Player: React.FunctionComponent<PlayerProps> = (
+  props: PlayerProps
 ): React.ReactElement => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [instance, setInstance] = Hooks.useSafeState<P5>(null);
