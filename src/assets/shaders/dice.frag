@@ -8,6 +8,11 @@ precision mediump float;
 uniform float time;
  
 varying vec2 vUv;
+
+vec4 hallucinate(vec2 coord, vec2 z, float t) {
+    vec4 p = vec4(coord, z.yx * 1.5);
+    return vec4(1., 1., 1., 1.);
+}
  
 void main(){
   vec2 fuv = -1.0 + 2.0 * vUv;
