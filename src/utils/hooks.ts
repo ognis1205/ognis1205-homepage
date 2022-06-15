@@ -17,7 +17,9 @@ const useUnmountRef = (): ReturnType<typeof React.useRef> => {
   return isUnmounted;
 };
 
-export const useSafeState = <T>(defaultValue: T): [T, ReturnType<typeof React.useCallback>] => {
+export const useSafeState = <T>(
+  defaultValue: T
+): [T, ReturnType<typeof React.useCallback>] => {
   const isUnmounted = useUnmountRef();
 
   const [state, setState] = React.useState<T>(defaultValue);

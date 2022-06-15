@@ -22,9 +22,11 @@ const Index: React.FunctionComponent<
       bg={Chakra.useColorModeValue('whiteAlpha.500', 'whiteAlpha.200')}
       css={{ backdropFilter: 'blur(10px)' }}
     >
-      Hello, I&apos;m a developer based in Tokyo!<br/>
-      The above &ldquo;MNIST Dice&rdquo; is a small neural network running entirely
-      in a WebGL GLSL shader that hallucinates new hand-written digits in real-time.
+      Hello, I&apos;m a developer based in Tokyo!
+      <br />
+      The above &ldquo;MNIST Dice&rdquo; is a small neural network running
+      entirely in a WebGL GLSL shader that hallucinates new hand-written digits
+      in real-time.
     </Chakra.Box>
     <Chakra.Box display={{ md: 'flex' }}>
       <Chakra.Box flexGrow={1}>

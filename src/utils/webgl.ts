@@ -2,7 +2,6 @@
  * @fileoverview Defines WebGL utilities.
  * @copyright Shingo OKAWA 2022
  */
-import * as THREE from 'three';
 import * as DOM from '@/utils/dom';
 
 export const isDefined = (): boolean => {

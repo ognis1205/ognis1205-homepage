@@ -3,16 +3,13 @@
  * @copyright Shingo OKAWA 2022
  */
 import * as React from 'react';
-import * as Chakra from '@chakra-ui/react';
 import * as THREE from 'three';
-import * as DOM from '@/utils/dom';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import * as Container from '@/components/mnist/container';
 import frag from '@/assets/shaders/dice.frag';
 import vert from '@/assets/shaders/dice.vert';
 
-const easeOutCirc = (x: number): number =>
-  Math.sqrt(1 - Math.pow(x - 1, 4));
+const easeOutCirc = (x: number): number => Math.sqrt(1 - Math.pow(x - 1, 4));
 
 export const Component: React.FunctionComponent<
   Record<string, never>
@@ -23,26 +20,32 @@ export const Component: React.FunctionComponent<
 
   const [renderer, setRenderer] = React.useState<THREE.WebGLRenderer>(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [camera, setCamera] = React.useState<THREE.OrthographicCamera>(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [controls, setControls] = React.useState<OrbitControls>(null);
 
   const [scene] = React.useState<THREE.Scene>(new THREE.Scene());
 
-  const [target] = React.useState<THREE.Vector3>(new THREE.Vector3(-0.5, 1.2, 0));
+  const [target] = React.useState<THREE.Vector3>(
+    new THREE.Vector3(-0.5, 1.2, 0)
+  );
 
   const [initialCameraPosition] = React.useState<THREE.Vector3>(
     new THREE.Vector3(
       20 * Math.sin(0.2 * Math.PI),
       10,
       20 * Math.cos(0.2 * Math.PI)
-  ));
+    )
+  );
 
   const handleWindowResize = React.useCallback(() => {
     if (container.current && renderer)
       renderer.setSize(
         container.current.clientWidth,
-        container.current.clientHeight);
+        container.current.clientHeight
+      );
   }, [renderer]);
 
   React.useEffect(() => {
@@ -52,8 +55,8 @@ export const Component: React.FunctionComponent<
 
       const r = new THREE.WebGLRenderer({
         antialias: true,
-        alpha: true
-      })
+        alpha: true,
+      });
       r.setPixelRatio(window.devicePixelRatio);
       r.setSize(w, h);
       r.outputEncoding = THREE.sRGBEncoding;
@@ -67,7 +70,7 @@ export const Component: React.FunctionComponent<
         -1.0 * (h * 0.005 + 4.8),
         0.01,
         50000
-      )
+      );
       c.position.copy(initialCameraPosition);
       c.lookAt(target);
       setCamera(c);
@@ -80,44 +83,47 @@ export const Component: React.FunctionComponent<
       setControls(o);
 
       const diceG = new THREE.BoxBufferGeometry(4, 4, 4);
-      diceG.setAttribute('side', new THREE.Float32BufferAttribute([
-        0, 0, 0, 0, 
-        1, 1, 1, 1, 
-        2, 2, 2, 2, 
-        3, 3, 3, 3, 
-        4, 4, 4, 4, 
-        5, 5, 5, 5
-      ], 1));
+      diceG.setAttribute(
+        'side',
+        new THREE.Float32BufferAttribute(
+          [
+            0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5,
+            5,
+          ],
+          1
+        )
+      );
       const edges = new THREE.LineSegments(
         new THREE.EdgesGeometry(diceG),
-        new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }));
- 
+        new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 })
+      );
+
       const diceM = new THREE.RawShaderMaterial({
         uniforms: {
           time: { type: 'f', value: 1.0 },
           zs: {
             type: 'v2v',
             value: [
-              new THREE.Vector2(-0.5286,  0.7118),
+              new THREE.Vector2(-0.5286, 0.7118),
               new THREE.Vector2(-0.9796, -0.0371),
-              new THREE.Vector2( 0.0949,  1.3948),
-              new THREE.Vector2( 0.6059,  0.6013),
-              new THREE.Vector2( 2.2363, -0.4799),
-              new THREE.Vector2( 0.8424, -0.4385),
-            ]
-          }
+              new THREE.Vector2(0.0949, 1.3948),
+              new THREE.Vector2(0.6059, 0.6013),
+              new THREE.Vector2(2.2363, -0.4799),
+              new THREE.Vector2(0.8424, -0.4385),
+            ],
+          },
         },
         vertexShader: vert,
         fragmentShader: frag,
       });
- 
+
       const dice = new THREE.Mesh(diceG, diceM);
       scene.add(dice);
       scene.add(edges);
 
-      let req = null
+      let req = null;
       let step = 0;
-      let frame = 0
+      let frame = 0;
       const animate = () => {
         req = requestAnimationFrame(animate);
         step++;
@@ -147,16 +153,19 @@ export const Component: React.FunctionComponent<
         renderer.dispose();
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
-    window.addEventListener('resize', handleWindowResize, false)
+    window.addEventListener('resize', handleWindowResize, false);
     return () => {
-      window.removeEventListener('resize', handleWindowResize, false)
+      window.removeEventListener('resize', handleWindowResize, false);
     };
   }, [renderer, handleWindowResize]);
 
   return (
-    <Container.Box ref={container}>{isLoading && <Container.Loader />}</Container.Box>
+    <Container.Box ref={container}>
+      {isLoading && <Container.Loader />}
+    </Container.Box>
   );
 };

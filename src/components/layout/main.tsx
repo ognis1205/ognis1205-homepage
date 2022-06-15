@@ -7,7 +7,6 @@ import * as NextApp from 'next/app';
 import * as Chakra from '@chakra-ui/react';
 import Head from 'next/head';
 import * as Navigation from '@/components/navigation';
-import * as ASCII from '@/components/layout/ascii';
 import * as Footer from '@/components/layout/footer';
 import * as MNIST from '@/components/mnist';
 

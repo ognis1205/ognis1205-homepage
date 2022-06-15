@@ -318,9 +318,14 @@ float f =
     return vec4(f, f, f, 1.);
 }
 
+float modI(float a, float b) {
+    float m = a - floor((a + 0.5) / b) * b;
+    return floor(m + 0.5);
+}
+
 vec4 line(float p) {
   vec4 r = vec4(0);
-  float i = mod(floor(p), 6.);
+  float i = modI(floor(p), 6.);
   if (i == 0.) r = vec4(zs[0].xy, zs[1].xy);
   else if (i == 1.) r = vec4(zs[1].xy, zs[2].xy);
   else if (i == 2.) r = vec4(zs[2].xy, zs[3].xy);
@@ -339,7 +344,7 @@ const float PI  = 3.141592653589793;
 void main(){
   vec2 uv = -1.0 + 2.0 * vUv;
   vec4 l = line(vSide + time);
-  float t = sin(2. * PI * (time - floor(time)) - PI) / 2. + .5;
+  float t = (sin(2. * PI * (time - floor(time)) - PI)) / 2. + .5;
   vec2 z = walk(l.xy, l.zw, t);
   gl_FragColor = hallucinate(uv.yx, z.xy);
 }
