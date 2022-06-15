@@ -1,11 +1,11 @@
 /**
- * @fileoverview Defines navbar.
+ * @fileoverview Defines container.
  * @copyright Shingo OKAWA 2022
  */
 import * as React from 'react';
 import * as Chakra from '@chakra-ui/react';
 
-export const Container = Chakra.forwardRef<Chakra.BoxProps, 'div'>(
+export const Box = Chakra.forwardRef<Chakra.BoxProps, 'div'>(
   ({ children, ...props }: Chakra.BoxProps, ref) => {
     return (
       <Chakra.Box

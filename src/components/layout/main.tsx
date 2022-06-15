@@ -9,6 +9,7 @@ import Head from 'next/head';
 import * as Navigation from '@/components/navigation';
 import * as ASCII from '@/components/layout/ascii';
 import * as Footer from '@/components/layout/footer';
+import * as MNIST from '@/components/mnist';
 import * as Sketches from '@/components/layout/sketches';
 
 export type Props = {
@@ -36,7 +37,7 @@ export const Component: React.FunctionComponent<Props> = ({
       </Head>
       <Navigation.NavBar path={router.asPath} />
       <Chakra.Container maxW="container.md" pt={14}>
-        <ASCII.Player sketch={Sketches.Rover}/>
+        <MNIST.Dice />
         {children}
         <Footer.Component />
       </Chakra.Container>
