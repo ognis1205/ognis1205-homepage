@@ -10,7 +10,6 @@ import * as Navigation from '@/components/navigation';
 import * as ASCII from '@/components/layout/ascii';
 import * as Footer from '@/components/layout/footer';
 import * as MNIST from '@/components/mnist';
-import * as Sketches from '@/components/layout/sketches';
 
 export type Props = {
   children: React.ReactNode;
