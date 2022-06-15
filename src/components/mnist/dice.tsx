@@ -80,6 +80,17 @@ export const Component: React.FunctionComponent<
       setControls(o);
 
       const diceG = new THREE.BoxBufferGeometry(4, 4, 4);
+      diceG.setAttribute('side', new THREE.Float32BufferAttribute([
+        0, 0, 0, 0, 
+        1, 1, 1, 1, 
+        2, 2, 2, 2, 
+        3, 3, 3, 3, 
+        4, 4, 4, 4, 
+        5, 5, 5, 5
+      ], 1));
+      const edges = new THREE.LineSegments(
+        new THREE.EdgesGeometry(diceG),
+        new THREE.LineBasicMaterial({ color: 0xffffff, linewidth: 2 }));
  
       const diceM = new THREE.RawShaderMaterial({
         uniforms: {
@@ -91,12 +102,12 @@ export const Component: React.FunctionComponent<
  
       const dice = new THREE.Mesh(diceG, diceM);
       scene.add(dice);
+      scene.add(edges);
 
       let req = null
       let step = 0;
       let frame = 0
       const animate = () => {
-        console.log('animate');
         req = requestAnimationFrame(animate);
         step++;
         frame = frame <= 100 ? frame + 1 : frame;
