@@ -19,7 +19,7 @@ export const Component: React.FunctionComponent<
 > = (): React.ReactElement => {
   const container = React.useRef<HTMLDivElement>(null);
 
-  const [isLoading, setLoading] = React.useState<boolean>(false);
+  const [isLoading, setLoading] = React.useState<boolean>(true);
 
   const [renderer, setRenderer] = React.useState<THREE.WebGLRenderer>(null);
 
@@ -46,7 +46,7 @@ export const Component: React.FunctionComponent<
   }, [renderer]);
 
   React.useEffect(() => {
-    if (DOM.isDefined() && container.current && !renderer) {
+    if (container.current && !renderer) {
       const w = container.current.clientWidth;
       const h = container.current.clientHeight;
 
@@ -79,7 +79,7 @@ export const Component: React.FunctionComponent<
       o.target = target;
       setControls(o);
 
-      const diceG = new THREE.BoxGeometry(4, 4, 4);
+      const diceG = new THREE.BoxBufferGeometry(4, 4, 4);
  
       const diceM = new THREE.RawShaderMaterial({
         uniforms: {
@@ -118,6 +118,8 @@ export const Component: React.FunctionComponent<
 
       animate();
 
+      setLoading(false);
+
       return () => {
         cancelAnimationFrame(req);
         renderer.dispose();
@@ -133,6 +135,6 @@ export const Component: React.FunctionComponent<
   }, [renderer, handleWindowResize]);
 
   return (
-    <Container.Box ref={container}>{isLoading && <Container.Spinner />}</Container.Box>
+    <Container.Box ref={container}>{isLoading && <Container.Loader />}</Container.Box>
   );
 };

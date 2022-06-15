@@ -10,7 +10,7 @@ export const Box = Chakra.forwardRef<Chakra.BoxProps, 'div'>(
     return (
       <Chakra.Box
         ref={ref}
-        className="voxel-dog"
+        className="mnist"
         m="auto"
         mt={['-20px', '-60px', '-120px']}
         mb={['-40px', '-140px', '-200px']}
@@ -41,7 +41,7 @@ export const Spinner: React.FunctionComponent<
 export const Loader: React.FunctionComponent<
   Record<string, never>
 > = (): React.ReactElement => (
-  <Container>
+  <Box>
     <Spinner />
-  </Container>
+  </Box>
 );
