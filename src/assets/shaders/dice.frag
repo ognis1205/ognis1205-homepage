@@ -4,15 +4,17 @@
  */
 
 precision mediump float;
- 
+
 uniform float time;
+
+uniform vec2 zs[6];
  
 varying float vSide;
 
 varying vec2 vUv;
 
-vec4 hallucinate(vec2 uv, vec2 z, float t) {
-    vec4 p = vec4(uv.xy, z.yx * 1.5);
+vec4 hallucinate(vec2 uv, vec2 z) {
+    vec4 p = vec4(uv.xy, z.xy);
 
 vec4 f0_0 = sin(
     p.x * vec4(-6.853,-7.156,1.157,-1.9) + 
@@ -315,9 +317,29 @@ float f =
 
     return vec4(f, f, f, 1.);
 }
+
+vec4 line(float p) {
+  vec4 r = vec4(0);
+  float i = mod(floor(p), 6.);
+  if (i == 0.) r = vec4(zs[0].xy, zs[1].xy);
+  else if (i == 1.) r = vec4(zs[1].xy, zs[2].xy);
+  else if (i == 2.) r = vec4(zs[2].xy, zs[3].xy);
+  else if (i == 3.) r = vec4(zs[3].xy, zs[4].xy);
+  else if (i == 4.) r = vec4(zs[4].xy, zs[5].xy);
+  else if (i == 5.) r = vec4(zs[5].xy, zs[0].xy);
+  return r;
+}
+
+vec2 walk(vec2 s, vec2 e, float t) {
+  return vec2(s + t * (e - s));
+}
+
+const float PI  = 3.141592653589793;
  
 void main(){
-  vec2 fuv = -1.0 + 2.0 * vUv;
-  vec2 z = vec2(vSide * cos(time * 0.1), vSide * sin(time * 0.1));
-  gl_FragColor = hallucinate(fuv.yx, z.xy, time * 0.1);
+  vec2 uv = -1.0 + 2.0 * vUv;
+  vec4 l = line(vSide + time);
+  float t = sin(2. * PI * (time - floor(time)) - PI) / 2. + .5;
+  vec2 z = walk(l.xy, l.zw, t);
+  gl_FragColor = hallucinate(uv.yx, z.xy);
 }
