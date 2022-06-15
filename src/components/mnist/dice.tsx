@@ -94,7 +94,18 @@ export const Component: React.FunctionComponent<
  
       const diceM = new THREE.RawShaderMaterial({
         uniforms: {
-          time: { type: 'f', value: 1.0 }
+          time: { type: 'f', value: 1.0 },
+          zs: {
+            type: 'v2v',
+            value: [
+              new THREE.Vector2(-0.5286,  0.7118),
+              new THREE.Vector2(-0.9796, -0.0371),
+              new THREE.Vector2( 0.0949,  1.3948),
+              new THREE.Vector2( 0.6059,  0.6013),
+              new THREE.Vector2( 2.2363, -0.4799),
+              new THREE.Vector2( 0.8424, -0.4385),
+            ]
+          }
         },
         vertexShader: vert,
         fragmentShader: frag,
@@ -123,7 +134,7 @@ export const Component: React.FunctionComponent<
           o.update();
         }
 
-        dice.material.uniforms.time.value = step / 60.0 * 5;
+        dice.material.uniforms.time.value = step / (60.0 * 5);
         r.render(scene, c);
       };
 
