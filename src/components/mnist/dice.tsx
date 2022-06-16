@@ -82,7 +82,7 @@ export const Component: React.FunctionComponent<
       o.target = target;
       setControls(o);
 
-      const diceG = new THREE.BoxBufferGeometry(4, 4, 4);
+      const diceG = new THREE.BoxBufferGeometry(2, 2, 2);
       diceG.setAttribute(
         'side',
         new THREE.Float32BufferAttribute(
@@ -104,10 +104,10 @@ export const Component: React.FunctionComponent<
           zs: {
             type: 'v2v',
             value: [
-              new THREE.Vector2(-0.593293309211731, -0.8138513565063477),
-              new THREE.Vector2(-0.10395344346761703, -1.3009282350540161),
-              new THREE.Vector2(-0.3981567323207855, -1.2262036800384521),
-              new THREE.Vector2(0.5465230941772461, -0.013888895511627197),
+              new THREE.Vector2(0.27015724778175354, -0.5928173661231995),
+              new THREE.Vector2(1.1476703882217407, 1.600296020507812),
+              new THREE.Vector2(0.36016106605529785, 1.4387712478637695),
+              new THREE.Vector2(-1.33907151222229, -0.35306602716445923),
               new THREE.Vector2(0.8575431704521179, -0.7637208700180054),
               new THREE.Vector2(0.6303218007087708, 0.5764791965484619),
             ],

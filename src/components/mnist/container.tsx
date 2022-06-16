@@ -12,10 +12,10 @@ export const Box = Chakra.forwardRef<Chakra.BoxProps, 'div'>(
         ref={ref}
         className="mnist"
         m="auto"
-        mt={['-20px', '-60px', '-120px']}
-        mb={['-40px', '-140px', '-200px']}
-        w={[280, 480, 640]}
-        h={[280, 480, 640]}
+        mt={['-40px', '-80px', '-120px']}
+        mb={['-20px', '-60px', '-100px']}
+        w={[210, 360, 480]}
+        h={[210, 360, 480]}
         position="relative"
         {...props}
       >
