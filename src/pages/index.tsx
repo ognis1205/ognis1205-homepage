@@ -2,6 +2,7 @@
  * @fileoverview Defines /.
  * @copyright Shingo OKAWA 2022
  */
+import * as React from 'react';
 import * as Chakra from '@chakra-ui/react';
 import * as ChakraIcon from '@chakra-ui/icons';
 import Image from 'next/image';

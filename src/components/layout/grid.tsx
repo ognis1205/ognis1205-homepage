@@ -12,7 +12,8 @@ export type LinkProps = {
   children: React.ReactNode;
   href: string;
   title: string;
-  thumbnail: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  thumbnail: any;
 };
 
 export const Link: React.FunctionComponent<LinkProps> = ({
@@ -28,7 +29,6 @@ export const Link: React.FunctionComponent<LinkProps> = ({
           src={thumbnail}
           alt={title}
           className="grid-item-thumbnail"
-          placeholder="blur"
           loading="lazy"
         />
         <Chakra.LinkOverlay href={href} target="_blank">

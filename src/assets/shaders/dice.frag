@@ -474,7 +474,7 @@ vec2 walk(vec2 s, vec2 e, float t) {
 const float PI  = 3.141592653589793;
  
 void main(){
-  vec2 uv = -1.0 + 2.0 * vUv;
+  vec2 uv = 1.0 - 2.0 * vUv;
   vec4 l = line(vSide);
   float t = (sin(2. * PI * (time - floor(time)) - PI)) / 2. + .5;
   vec2 z = walk(l.xy, l.zw, t);
