@@ -3,8 +3,10 @@
  * @copyright Shingo OKAWA 2022
  */
 import * as Chakra from '@chakra-ui/react';
+import * as ChakraIcon from '@chakra-ui/icons';
 import Image from 'next/image';
-//import * as Layout from '@/components/layout';
+import NextLink from 'next/link';
+import * as Layout from '@/components/layout';
 
 const ProfileImage = Chakra.chakra(Image, {
   shouldForwardProp: (prop) => ['width', 'height', 'src', 'alt'].includes(prop),
@@ -61,6 +63,29 @@ const Index: React.FunctionComponent<
         </Chakra.Box>
       </Chakra.Box>
     </Chakra.Box>
+
+    <Layout.Section delay={0.1}>
+      <Chakra.Heading as="h3" variant="section-title">
+        Work
+      </Chakra.Heading>
+      <Layout.Paragraph>
+        Shingo is a software developer based in Tokyo with a passion for
+        building digital services/stuff he wants. He has a knack for all things
+        prototyping products, from planning and designing all the way to solving
+        real-life problems with code. When not online, he loves cooking and
+        playing with his cat buddies.
+      </Layout.Paragraph>
+      <Chakra.Box align="center" my={4}>
+        <NextLink href="/works" passHref scroll={false}>
+          <Chakra.Button
+            rightIcon={<ChakraIcon.ChevronRightIcon />}
+            colorScheme="teal"
+          >
+            My portfolio
+          </Chakra.Button>
+        </NextLink>
+      </Chakra.Box>
+    </Layout.Section>
   </Chakra.Container>
 );
 

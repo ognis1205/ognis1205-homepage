@@ -4,3 +4,4 @@
  */
 export { Component as Main } from './main';
 export { Component as Section } from './section';
+export { Component as Paragraph } from './paragraph';
