@@ -104,12 +104,12 @@ export const Component: React.FunctionComponent<
           zs: {
             type: 'v2v',
             value: [
-              new THREE.Vector2(-0.5286, 0.7118),
-              new THREE.Vector2(-0.9796, -0.0371),
-              new THREE.Vector2(0.0949, 1.3948),
-              new THREE.Vector2(0.6059, 0.6013),
-              new THREE.Vector2(2.2363, -0.4799),
-              new THREE.Vector2(0.8424, -0.4385),
+              new THREE.Vector2(-0.593293309211731, -0.8138513565063477),
+              new THREE.Vector2(-0.10395344346761703, -1.3009282350540161),
+              new THREE.Vector2(-0.3981567323207855, -1.2262036800384521),
+              new THREE.Vector2(0.5465230941772461, -0.013888895511627197),
+              new THREE.Vector2(0.8575431704521179, -0.7637208700180054),
+              new THREE.Vector2(0.6303218007087708, 0.5764791965484619),
             ],
           },
         },

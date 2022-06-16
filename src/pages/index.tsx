@@ -86,6 +86,19 @@ const Index: React.FunctionComponent<
         </NextLink>
       </Chakra.Box>
     </Layout.Section>
+
+    <Layout.Section delay={0.2}>
+      <Chakra.Heading as="h3" variant="section-title">
+        Bio
+      </Chakra.Heading>
+      <Layout.Bio
+        title="Stay at Home, Tokyo - Chief Housework Officer"
+        year="August 2020 - Present"
+      >
+        Living with my partner and cat buddies.
+        Conducting all of the housework and having a life-long passion for cooking.
+      </Layout.Bio>
+    </Layout.Section>
   </Chakra.Container>
 );
 
