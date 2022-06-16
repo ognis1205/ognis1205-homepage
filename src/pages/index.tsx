@@ -15,7 +15,7 @@ const ProfileImage = Chakra.chakra(Image, {
 const Index: React.FunctionComponent<
   Record<string, never>
 > = (): React.ReactElement => (
-  <Layout.Article>
+  <Layout.Article title="Home">
     <Chakra.Container>
       <Chakra.Box
         borderRadius="lg"
@@ -85,7 +85,7 @@ const Index: React.FunctionComponent<
           </NextLink>
           .
         </Layout.Paragraph>
-        <Chakra.Box align="center" my={4}>
+        <Chakra.Box textAlign="center" my={4}>
           <NextLink href="/works" passHref scroll={false}>
             <Chakra.Button
               rightIcon={<ChakraIcon.ChevronRightIcon />}
@@ -120,7 +120,7 @@ const Index: React.FunctionComponent<
           year="December 2016 - April 2018"
         >
           Designed and built financial data microservices and portfolio
-          optimization engines Researched topological data analysis for market
+          optimization engine. Researched topological data analysis for market
           regime analysis.
         </Layout.Bio>
         <Layout.Bio
@@ -144,7 +144,7 @@ const Index: React.FunctionComponent<
           year="May 2011 - October 2014"
         >
           Designed and built internal management system of search engines.
-          Researched next generation search/recommendation engines.
+          Researched next generation search/recommendation system.
         </Layout.Bio>
         <Chakra.Heading as="h3" variant="section-title">
           Education

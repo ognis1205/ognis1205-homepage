@@ -42,7 +42,6 @@ export const Component: React.FunctionComponent<Props> = ({
           </Head>
         )}
         {children}
-
         <Grid.Global />
       </>
     </FramerMotion.motion.article>
