@@ -75,9 +75,6 @@ export const Component: React.FunctionComponent<Props> = ({
           <MyLink href="/works" path={path}>
             Works
           </MyLink>
-          <MyLink href="/posts" path={path}>
-            Posts
-          </MyLink>
           <MyLink
             target="_blank"
             href="https://github.com/ognis1205/ognis1205-homepage"
